@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Социальные сети и мессенджеры</title>
+<script type= "text/javascript">
+function fio()
+{alert("Байбородин Андрей Вадимович гр. 4916")}
+
+function   bigben ()
+{ 
+	var  datecur, hour, minute;     
+	datecur = new Date();
+	hour = datecur.getHours();
+	minute= datecur.getMinutes();
+	hour_2  = ((hour <10) ? "0" : "" ) + hour + " ";
+	minute_2  = (minute < 10) ? "0" + minute : minute;
+	tmr = document.getElementById ('tmr');
+	tmr.innerText = hour_2 + " " + ":" + minute_2;    
+}
+
+function second()
+{
+	var datecur = new Date();
+	sec = datecur.getSeconds();
+	seconds  = (sec < 10) ? '0' + sec : sec;
+	tmr = document.getElementById ('tmr1');
+	tmr.innerText = ":" + seconds;
+	setInterval(second, 1000);
+}
+setInterval(bigben, 1000);
+
+//Удаление
+function SomeDeleteRowFunction(o) {
+     
+     var p=o.parentNode.parentNode;
+         p.parentNode.removeChild(p);
+}
+//Цвет
+function changeColor(colorValue) {
+document.body.style.background = document.getElementById(colorValue).dataset.color;
+}
+
+function Add()
+{
+	var name = document.getElementById('name').value;
+	var type = document.getElementById('type').value;
+	var reg = document.getElementById('reg').value;
+	var lang = document.getElementById('lang').value;
+	var pos = document.getElementById('pos').value;
+	if(name && type && reg && lang && pos)
+	{
+		var tr = document.createElement('tr');
+		var td1 = document.createElement('td');
+		var td2 = document.createElement('td');
+		var td3 = document.createElement('td');
+		var td4 = document.createElement('td');
+		var td5 = document.createElement('td');
+		var td6 = document.createElement('td');
+		var text1 = document.createTextNode(name);
+		var text2 = document.createTextNode(type);
+		var text3 = document.createTextNode(reg);
+		var text4 = document.createTextNode(lang);
+		var text5 = document.createTextNode(pos);
+		var text6 = document.createElement("button");
+		var buttext = document.createTextNode("Удалить");
+		var atr = document.createAttribute('onclick');
+		atr.value = 'deleteRow(this);';
+		text6.appendChild(buttext);
+		text6.setAttributeNode(atr);
+		td1.appendChild(text1);
+		td2.appendChild(text2);
+		td3.appendChild(text3);
+		td4.appendChild(text4);
+		td5.appendChild(text5);
+		td6.appendChild(text6);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+		tr.appendChild(td6);
+		var table = document.getElementById('table');
+		table.appendChild(tr);
+		
+	}
+}
+
+function kol()
+{
+	var ch = document.getElementsByTagName("tr");
+	alert("Количество строк в таблице: " + ch.length);
+}
+</script>
+
+</head>
+<link rel="stylesheet" href="lab2.css">
+
+<body>
+<div class="color-panel">
+<div id="blue" data-color="#b3e5fc"> </div>
+<div id="red" data-color="#ffcdd2"> </div>
+<div id="purple" data-color="#b39ddb"> </div>
+<div id="green" data-color="#c5e1a5"> </div>
+<div id="orange" data-color="#ffcc80"> </div>
+</div>
+<div class="color-panel">
+<div id="blue" data-color="#b3e5fc" onclick="changeColor('blue')"></div>
+<div id="red" data-color="#ffcdd2" onclick="changeColor('red')"></div>
+<div id="purple" data-color="#b39ddb" onclick="changeColor('purple')"></div>
+<div id="green" data-color="#c5e1a5" onclick="changeColor('green')"></div>
+<div id="orange" data-color="#ffcc80" onclick="changeColor('orange')"></div>
+</div>
+
+<h1>Социальные сети и мессенджеры  </h1>   
+<center><img src = "социальные сети.jpg" width = "700" heigth = "352" alt = "Социальные сети и мессенджеры"> </center><br>    
+<a href = "Определения.html" target="_blank">Определения понятий социальные сети и мессенджеры </a>            
+<p><b>Одни из самых популярных социальных сетей и мессенджеров:</b></p>
+<center>
+<div class="dropdown">
+  <ul>
+  <li><b>Социальные сети</b></li>
+  <div class="dropdown-content">
+    <ol>
+      <li style="color: blue;"> ВКонтакте </li>
+      <li style="color: orange;"> Одноклассники </li>
+      <li style="color: rgb(54.51%, 0%, 100%);"> Instagram </li>
+      <li style="color: #000080;"> Facebook </li>      
+    </ol>
+  </div>
+</div>
+<br>
+<div class="imgset"></div>
+<div class="dropdown">
+  <ul>
+  <li><b>Мессенджеры</b></li>
+  <div class="dropdown-content">
+    <ol>      
+      <li id="navy"> Telegram </li>      
+      <li id="green"> WhatsApp </li>
+      <li> Discord </li>
+      <li id="blue"> Zoom </li>      
+    </ol>
+  </div>
+</div>
+<div class="imgmes"></div><br>
+
+<style type="text/css">
+li#navy{color: navy;}
+li#green{color: green;}
+li#blue{color: blue;}
+</style>
+</center>
+
+<div>
+<label for="name">Название</label>
+<input name="name" id="name" type="text"><br>
+<label for="type">Тип сайта</label>
+<input name="type" id="type" type="text"><br>
+<label for="reg">Регистрация</label>
+<input name="reg" id="reg" type="text"><br>
+<label for="lang">Язык</label>
+<input name="lang" id="lang" type="text"><br>
+<label for="pos">Посещаемость</label>
+<input name="pos" id="pos" type="text"><br>
+<button id="add" onclick="Add()"; return false; ">Добавить</button>
+</div><br>
+
+
+<div class="scroll-table">
+	<table>
+	<caption onclick = "kol()"><b>Информация о популярных социальных сетях</b></caption>
+		<thead>
+			<tr>
+				<th>Название</th>
+				<th>Тип сайта</th>
+				<th>Регистрация</th>
+				<th>Язык(и)</th>
+				<th>Посещаемость</th>
+				<th>Удаление строк</th>
+			</tr>
+		</thead>
+	</table>
+	<div  class="scroll-table-body">
+		<table id = "table">
+			<tbody>
+				<tr>
+					<th>ВКонтакте</th>
+					<td rowspan = "7" id = "soc"></td>
+					<td> Свободная </td>
+					<td> Многоязычная</td>
+					<td>137 млн. (зарегистрированных), 42 млн. (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>	
+				</tr>
+				<tr>
+					<th>Одноклассники</th>
+					<td> Бесплатная </td>
+					<td> Русский, Украинский</td>
+					<td>100 млн. (зарегистрированных), 30 млн. (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>						
+				</tr>
+				<tr>
+					<th>Instagram</th>
+					<td> Требуется </td>
+					<td> Многоязычная</td>
+					<td>1 млрд 100 млн (зарегистрированных), 875 млн (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>						
+				</tr>
+				<tr>
+					<th>Facebook</th>
+					<td> Требуется </td>					
+					<td> Многоязычная</td>
+					<td>1 млрд 100 млн (зарегистрированных), 875 млн (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>	
+				</tr>
+				<tr>
+					<th>Twitter</th>
+					<td> Требуется </td>					
+					<td> Многоязычная</td>
+					<td>1 млрд 300 млн (зарегистрированных), 900млн (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>	
+				</tr>
+				<tr>
+					<th>Reddit</th>
+					<td> Свободная </td>					
+					<td> Многоязычная</td>
+					<td>36 млн (зарегистрированных), 15 млн (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>	
+				</tr>
+				<tr>
+					<th>Tumblr</th>
+					<td> Свободная </td>					
+					<td> Многоязычная</td>
+					<td>220 млн (зарегистрированных), 100 млн (активных)</td>
+					<td><input type="button" value="Удалить" onclick="SomeDeleteRowFunction(this)"></td>	
+								
+				</tr>
+			</tbody>
+		</table>
+	</div>	
+</div>
+
+
+<hr>
+<footer>
+  <button onclick = "fio()"> ФИО и группа автора сайта </button><br>
+  baiborodin@mail.ru<br>
+<a href = "http://localhost/osnprof/lab5.php" target="_blank">Таблицы </a>
+Время:  <span id="tmr"> </span>  <span id="tmr1"> </span><br>
+<button onclick = "second()"> Вывести секунды</button><br>
+
+
+
+</footer>
+</body>   </html>
